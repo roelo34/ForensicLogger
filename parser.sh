@@ -5,9 +5,9 @@ preexec() {
     while IFS= read -r line; do
     #Check of logger.cfg een 1 bevat
         if [ $line -eq 1 ] ; then
-            stop=1
-        else
             stop=0
+        else
+            stop=1
         fi
     done < "$file"
 
@@ -41,9 +41,9 @@ precmd(){
     while IFS= read -r line; do
     #Check of logger.cfg een 1 bevat
         if [ $line -eq 1 ] ; then
-            stop=1
-        else
             stop=0
+        else
+            stop=1
         fi
     done < "$file"
 
