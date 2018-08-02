@@ -14,23 +14,22 @@ preexec() {
     if ! [ $stop -eq 1 ]; then
         #vragen of de command gelogd moet worden of niet
         vared -p 'Do you want to log this command? [y/N]: ' -c tmp
-
         #Verdere informatie voor het loggen van een command
         logCommand(){
             vared -p 'What do you want to accomplish by running this command?' -c what
             vared -p 'Why do you want to run this command?' -c why
-            #logLine is voor nu hardcoded, later meer functionaliteit in .logger.cfg
-            logLine=("Roel" "Wassenaar" $currentDate $what $1 $why)
+            
         }
         
         #cases
+        #logLine is voor nu hardcoded, later meer functionaliteit in .logger.cfg
         case "$tmp" in
-        "y") logCommand; print "logged"; echo $logLine >> /home/$USER/Documents/log.txt;;
+        "y") logCommand; print "logged";\
+            logLine=("Roel"",""Wassenaar"","$currentDate","$what","$1","$why",");\
+            echo $logLine >> /home/$USER/Documents/log.txt;;
         "n") print "";;
         *) print "";
         esac
-
-        
 
     fi
 
