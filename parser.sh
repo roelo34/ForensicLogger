@@ -20,7 +20,7 @@ preexec() {
             vared -p 'Why do you want to run this command?' -c why
             
         }
-        
+
         #cases
         #logLine is voor nu hardcoded, later meer functionaliteit in .logger.cfg
         case "$tmp" in
@@ -33,4 +33,29 @@ preexec() {
 
     fi
 
+}
+
+precmd(){
+    file="/home/$USER/.logger.cfg"
+
+    while IFS= read -r line; do
+    #Check of logger.cfg een 1 bevat
+        if [ $line -eq 1 ] ; then
+            stop=1
+        else
+            stop=0
+        fi
+    done < "$file"
+
+    #Als .logger.cfg een 1 bevat, doe niks.
+    if ! [ $stop -eq 1 ]; then
+        vared -p 'Copy the output and paste here: ' -c outCom
+        echo $outCom >> /home/$USER/Documents/log.csv
+    fi
+
+    #Checken of het einde van het bestand een \n bevat. Zo ja, verwijder deze.
+    if [[ $(tail -c1 /home/$USER/Documents/log.csv | wc -l) == 1 ]]; then
+        head -c -1 /home/$USER/Documents/log.csv > /home/$USER/Documents/log.tmp
+        mv /home/$USER/Documents/log.tmp /home/$USER/Documents/log.csv
+    fi
 }
