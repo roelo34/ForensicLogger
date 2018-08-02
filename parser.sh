@@ -26,7 +26,7 @@ preexec() {
         case "$tmp" in
         "y") logCommand; print "logged";\
             logLine=("Roel"",""Wassenaar"","$currentDate","$what","$1","$why",");\
-            echo $logLine >> /home/$USER/Documents/log.txt;;
+            echo $logLine >> /home/$USER/Documents/log.csv;;
         "n") print "";;
         *) print "";
         esac
