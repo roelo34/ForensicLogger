@@ -49,7 +49,13 @@ precmd(){
 
     #Als .logger.cfg een 1 bevat, doe niks.
     if ! [ $stop -eq 1 ]; then
-        vared -p 'Copy the output and paste here: ' -c outCom
+        vared -p 'Copy the output and paste here (Enter to skip): ' -c outCom
+        
+        #Stop wanneer een enter wordt doorgegeven
+        if [[ "$outCom" == "\n" ]]; then
+            kill -INT $$
+        fi
+
         cleanCom=$(echo "$outCom" | tr '\n' ' ')
         echo $cleanCom >> /home/$USER/Documents/log.csv
     fi
