@@ -50,7 +50,8 @@ precmd(){
     #Als .logger.cfg een 1 bevat, doe niks.
     if ! [ $stop -eq 1 ]; then
         vared -p 'Copy the output and paste here: ' -c outCom
-        echo $outCom >> /home/$USER/Documents/log.csv
+        cleanCom=$(echo "$outCom" | tr '\n' ' ')
+        echo $cleanCom >> /home/$USER/Documents/log.csv
     fi
 
 }
