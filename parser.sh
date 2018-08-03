@@ -1,6 +1,6 @@
 preexec() {
     file="/home/$USER/.logger.cfg"
-    currentDate=$(date +%Y-%m-%d_%H-%M-%S)
+    currentDate=$(date +%Y-%m-%d_%H:%M:%S)
 
     while IFS= read -r line; do
     #Check of logger.cfg een 1 bevat
