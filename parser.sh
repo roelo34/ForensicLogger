@@ -16,8 +16,8 @@ preexec() {
         vared -p 'Do you want to log this command? [y/N]: ' -c tmp
         #Verdere informatie voor het loggen van een command
         logCommand(){
-            vared -p 'What do you want to accomplish by running this command?' -c what
-            vared -p 'Why do you want to run this command?' -c why
+            vared -p 'What do you want to accomplish by running this command? ' -c what
+            vared -p 'Why do you want to run this command? ' -c why
             
         }
 
@@ -26,7 +26,7 @@ preexec() {
         case "$tmp" in
         "y") logCommand; print "logged";\
             logLine=("Roel"",""Wassenaar"","$currentDate","$what","$1","$why",");\
-            echo $logLine >> /home/$USER/Documents/log.csv;;
+            echo -ne $logLine >> /home/$USER/Documents/log.csv;;
         "n") print "";;
         *) print "";
         esac
@@ -53,9 +53,4 @@ precmd(){
         echo $outCom >> /home/$USER/Documents/log.csv
     fi
 
-    #Checken of het einde van het bestand een \n bevat. Zo ja, verwijder deze.
-    if [[ $(tail -c1 /home/$USER/Documents/log.csv | wc -l) == 1 ]]; then
-        head -c -1 /home/$USER/Documents/log.csv > /home/$USER/Documents/log.tmp
-        mv /home/$USER/Documents/log.tmp /home/$USER/Documents/log.csv
-    fi
 }
