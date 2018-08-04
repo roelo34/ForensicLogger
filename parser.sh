@@ -17,7 +17,7 @@ preexec() {
         case "$tmp" in
         "y") logCommand; print "logged";\
             logLine=($name","$location","$currentDate","$what","$1","$why",");\
-            echo -ne $logLine >> /home/$USER/Documents/log.csv;;
+            echo -ne $logLine >> /home/$USER/Documents/ForensicLogger/log.csv;;
         "n") print "";;
         *) print "";
         esac
@@ -40,7 +40,7 @@ precmd(){
 
         #Replace newlines in outCom with spaces
         cleanCom=$(echo "$outCom" | tr '\n' ' ')
-        echo $cleanCom >> /home/$USER/Documents/log.csv
+        echo $cleanCom >> /home/$USER/Documents/ForensicLogger/log.csv
     fi
 
 }
