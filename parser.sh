@@ -1,20 +1,12 @@
 preexec() {
-    file="/home/$USER/.logger.cfg"
     currentDate=$(date +%Y-%m-%d_%H:%M:%S)
+    #source the config file
+    source /home/$USER/.logger.cfg
 
-    while IFS= read -r line; do
-    #Check of logger.cfg een 1 bevat
-        if [ $line -eq 1 ] ; then
-            stop=0
-        else
-            stop=1
-        fi
-    done < "$file"
-
-    if ! [ $stop -eq 1 ]; then
-        #vragen of de command gelogd moet worden of niet
+    if [ $logStat -eq 1 ]; then
+        #Ask if the next command should be logged or not
         vared -p 'Do you want to log this command? [y/N]: ' -c tmp
-        #Verdere informatie voor het loggen van een command
+        #Ask for further information about the command
         logCommand(){
             vared -p 'What do you want to accomplish by running this command? ' -c what
             vared -p 'Why do you want to run this command? ' -c why
@@ -22,10 +14,9 @@ preexec() {
         }
 
         #cases
-        #logLine is voor nu hardcoded, later meer functionaliteit in .logger.cfg
         case "$tmp" in
         "y") logCommand; print "logged";\
-            logLine=("Roel"",""Wassenaar"","$currentDate","$what","$1","$why",");\
+            logLine=($name","$location","$currentDate","$what","$1","$why",");\
             echo -ne $logLine >> /home/$USER/Documents/log.csv;;
         "n") print "";;
         *) print "";
@@ -36,26 +27,18 @@ preexec() {
 }
 
 precmd(){
-    file="/home/$USER/.logger.cfg"
+    source /home/$USER/.logger.cfg
 
-    while IFS= read -r line; do
-    #Check of logger.cfg een 1 bevat
-        if [ $line -eq 1 ] ; then
-            stop=0
-        else
-            stop=1
-        fi
-    done < "$file"
-
-    #Als .logger.cfg een 1 bevat, doe niks.
-    if ! [ $stop -eq 1 ]; then
+    #if logStat is equal to 0, do nothing
+    if [ $logStat -eq 1 ]; then
         vared -p 'Copy the output and paste here (Enter to skip): ' -c outCom
         
-        #Stop wanneer een enter wordt doorgegeven
+        #Stop when outCom equals a newline
         if [[ "$outCom" == "\n" ]]; then
             kill -INT $$
         fi
 
+        #Replace newlines in outCom with spaces
         cleanCom=$(echo "$outCom" | tr '\n' ' ')
         echo $cleanCom >> /home/$USER/Documents/log.csv
     fi
