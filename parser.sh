@@ -31,6 +31,10 @@ precmd(){
 
     #if logStat is equal to 0, do nothing
     if [ $logStat -eq 1 ]; then
+        if [ ! -f $workingDir/log.csv ]; then
+            print "Log not found! Creating it for you..."
+            touch $workingDir/log.csv
+        fi
         vared -p 'Copy the output and paste here (Enter to skip): ' -c outCom
         
         #Stop when outCom equals a newline
