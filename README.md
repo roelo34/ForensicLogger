@@ -13,6 +13,7 @@ If left unconfigured, the script will ask you three questions:
 - What is the source of this file?
 - What is the destination of this file?
 - What is the evidence ID of this file?
+
 Standard awnsers to these questions are configurable in *.logger.cfg*. However the evidence ID can not be set in the configuration file.
 
 ## DISCLAIMER
