@@ -19,6 +19,8 @@ After installing ZSH you have to give the scripts execution permission
 
 Finally you can run *install.sh* and you're ready to start using ForensicLogger!
 
+**Make sure to NOT run the script as root!**
+
 ### Configuring
 After installing, you can find a configuration file in your home directory named: *.logger.cfg*. In this file are configurable variables like: turning the logger on or off and setting your name and location for your digital forensic log.
 
