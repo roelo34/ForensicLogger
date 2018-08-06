@@ -22,7 +22,7 @@ else
     whereTo=$evidenceLocker
 fi
 
-vared -p 'What is the evidence number for this file? ' -c eid
+vared -p 'What is the evidence ID for this file? ' -c eid
 hash=$(sha1sum "$1" | cut -d ' ' -f 1)
 logLine=$name","$location","$currentDate","$1","$eid","$whereFrom","$whereTo","$hash
 
