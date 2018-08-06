@@ -1,5 +1,19 @@
 # ForensicLogger
-A way to log all command-line commands to a file and generate a chain of custody.
+The ForensicLogger is a set of scipts that help with making logs and chain of custodies for digital forensics.
+
+### The Logger
+The logger takes in your name, location, timestamp of the command you ran and asks a couple questions you need to make a proper digital forensics log!
+
+Before a command is executed, the logger will ask if you want to log the command or not. If yes, it will ask *what you wish to accomplish with the command* and *why* you did it. Afterwards it asks to copy and paste the output in the terminal, then it will write all the necessary data to a csv file named: *log.csv*. This file can then be imported in your application of choise.
+
+### The Chain of Custody Generator
+The chain of custody generator *coc.sh* will take in a file, of which it will take the sha1 hash and export it to a file named: *CoC.csv*. This file will, just like the log, contain your name, location and timestamp of when the script was ran.
+
+If left unconfigured, the script will ask you three questions:
+- What is the source of this file?
+- What is the destination of this file?
+- What is the evidence ID of this file?
+Standard awnsers to these questions are configurable in *.logger.cfg*. However the evidence ID can not be set in the configuration file.
 
 ## DISCLAIMER
 My scripting skills are very mediocre! If you have any ideas or feedback, don't be hesitant to fork this repository or send me a message!
