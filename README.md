@@ -1,5 +1,5 @@
 # ForensicLogger
-The ForensicLogger is a set of scipts that help with making logs and chain of custodies for digital forensics.
+The ForensicLogger is a set of scripts that helps with making logs and chain of custodies for digital forensics.
 
 ### The Logger
 The logger takes in your name, location, timestamp of the command you ran and asks a couple questions you need in order to make a proper digital forensics log!
