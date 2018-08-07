@@ -8,14 +8,14 @@ if [ ! -f $workingDir/CoC.csv ]; then
             touch $workingDir/CoC.csv
         fi
 
-if [ $evidenceSource = "" ]; then
+if [ $evidenceSource = "0" ]; then
     vared -p 'What is the source of this file? ' -c whereFrom
 else
     print "Standard evidence source set: $evidenceSource"
     whereFrom=$evidenceSource
 fi
 
-if [ $evidenceLocker = "" ]; then
+if [ $evidenceLocker = "0" ]; then
     vared -p 'What is the destination of this file? ' -c whereTo
 else
     print "Standard evidence locker set: $evidenceLocker"
