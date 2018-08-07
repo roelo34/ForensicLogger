@@ -6,6 +6,9 @@ The logger takes in your name, location, timestamp of the command you ran and as
 
 Before a command is executed, the logger will ask if you want to log the command or not. If yes, it will ask *what do you wish to accomplish with the command* and *why*. Afterwards it asks to copy and paste the output in the terminal, then it will write all the necessary data to a csv file named: *log.csv*. This file can then be imported in your application of choice.
 
+## The Manual Logger
+The manual logger *mlog.sh* works similarly to *parser.sh*, but instead of parsing the command you executed in the terminal, it will ask an extra question regarding your action.
+
 ### The Chain of Custody Generator
 The chain of custody generator *coc.sh* will take in a file, of which it will take the sha1 hash and export it to a file named: *CoC.csv*. This file will, just like the log, contain your name, location and timestamp of when the script was executed.
 
@@ -42,6 +45,6 @@ After installing, you can find a configuration file in your home directory named
 More details about the variables are in the configuration file itself.
 
 ## Optional
-You can add *coc.sh* to your PATH to make adding entries to your chain of custody even easier!
+You can add *coc.sh* and *mlog.sh* to your PATH to make adding entries to your chain of custody and logging activities in GUIs even easier!
 
-`sudo cp coc.sh /usr/bin/coc`
+`sudo cp coc.sh /usr/bin/coc && sudo cp mlog.sh /usr/bin/mlog`
