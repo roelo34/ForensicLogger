@@ -6,7 +6,7 @@ The logger takes in your name, location, timestamp of the command you ran and as
 
 Before a command is executed, the logger will ask if you want to log the command or not. If yes, it will ask *what do you wish to accomplish with the command* and *why*. Afterwards it asks to copy and paste the output in the terminal, then it will write all the necessary data to a csv file named: *log.csv*. This file can then be imported in your application of choice.
 
-## The Manual Logger
+### The Manual Logger
 The manual logger *mlog.sh* works similarly to *parser.sh*, but instead of parsing the command you executed in the terminal, it will ask an extra question regarding your action.
 
 ### The Chain of Custody Generator
