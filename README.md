@@ -2,6 +2,10 @@
 
 The ForensicLogger is a set of scripts that helps with making logs and chain of custodies for digital forensics.
 
+## DISCLAIMER
+
+My scripting skills are very mediocre! If you have any ideas or feedback, don't hesitate to fork this repository or send me a message!
+
 ## The Logger
 
 The logger takes in your name, location, timestamp of the command you ran and asks a couple questions you need in order to make a proper digital forensics log!
@@ -24,22 +28,13 @@ If left unconfigured, the script will ask you three questions:
 
 Standard awnsers to these questions are configurable in *.logger.cfg*. However, the evidence ID cannot be set in the configuration file.
 
-## DISCLAIMER
-
-My scripting skills are very mediocre! If you have any ideas or feedback, don't hesitate to fork this repository or send me a message!
-
 ## Installation
 
 For these scripts, you will need ZSH. ZSH can be downloaded like so:
 
-**Debian based**
-`sudo apt-get install zsh`
+[ZSH Installation instructions](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH#how-to-install-zsh-in-many-platforms)
 
-**Arch based**
-`sudo pacman -S zsh`
-
-**Fedora based**
-`sudo yum install zsh`
+*You only need ZSH. Oh-My-ZSH is entirely optional*
 
 ### Setting up permissions
 
