@@ -40,7 +40,9 @@ For these scripts, you will need ZSH. ZSH can be downloaded like so:
 
 After installing ZSH you have to give the scripts execution permission
 
-`chmod +x parser.sh coc.sh install.sh`
+```bash
+chmod +x parser.sh coc.sh install.sh
+```
 
 Finally you can run *install.sh* and you're ready to start using ForensicLogger!
 
@@ -56,4 +58,6 @@ More details about the variables are in the configuration file itself.
 
 You can add *coc.sh* and *mlog.sh* to your PATH to make adding entries to your chain of custody and logging activities in GUIs even easier!
 
-`sudo cp coc.sh /usr/bin/coc && sudo cp mlog.sh /usr/bin/mlog`
+```bash
+sudo cp coc.sh /usr/bin/coc && sudo cp mlog.sh /usr/bin/mlog
+```
