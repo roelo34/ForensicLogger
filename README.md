@@ -43,8 +43,3 @@ Finally you can run *install.sh* and you're ready to start using ForensicLogger!
 After installing, you can find a configuration file in your home directory named: *.logger.cfg*. In this file are configurable variables like: turning the logger on or off and setting your name and location for your digital forensic log.
 
 More details about the variables are in the configuration file itself.
-
-## Optional
-You can add *coc.sh* and *mlog.sh* to your PATH to make adding entries to your chain of custody and logging activities in GUIs even easier!
-
-`sudo cp coc.sh /usr/bin/coc && sudo cp mlog.sh /usr/bin/mlog`
