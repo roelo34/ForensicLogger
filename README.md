@@ -28,6 +28,10 @@ If left unconfigured, the script will ask you three questions:
 
 Standard awnsers to these questions are configurable in *.logger.cfg*. However, the evidence ID cannot be set in the configuration file.
 
+## The Hash Checker
+
+The hash checker *checkhash.sh* will take in two files, the file to check and a hashfile (i.e. *foo.sha1*). The script will then compare the content of the hashfile with the actual hash of the file you want to check and tells you if the hashes match or not. Furthermore, the script will also print the hash of the file and the content of the hashfile.
+
 ## Installation
 
 For these scripts, you will need ZSH. ZSH can be downloaded like so:
@@ -41,7 +45,7 @@ For these scripts, you will need ZSH. ZSH can be downloaded like so:
 After installing ZSH you have to give the scripts execution permission
 
 ```bash
-chmod +x parser.sh coc.sh install.sh
+chmod +x parser.sh coc.sh install.sh mlog.sh checkhash.sh
 ```
 
 Finally you can run *install.sh* and you're ready to start using ForensicLogger!
