@@ -9,8 +9,8 @@ else
     givenHash=$(cat "$2" | cut -d ' ' -f 1)
 
     echo 'Please ignore the error above.'
-    echo $hashingFile
-    echo $givenHash
+    echo 'Checksum result: ' $hashingFile
+    echo 'Given hash: ' $givenHash
 
     if [ $hashingFile = $givenHash ]; then
         echo "Hashes match!"
