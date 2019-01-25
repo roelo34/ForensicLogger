@@ -17,4 +17,3 @@ vared -p 'What is the result of this action? ' -c actResult
 #the line that is going to appear in the log file
 logLine=$name","$location","$currentDate","$actWhat","$actHow","$actWhy","$actResult
 echo $logLine >> $workingDir/log.csv
-#test
