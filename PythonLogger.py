@@ -50,15 +50,13 @@ def logger(logFilePath):
     case = logFile['Case Info']['B1'].value
     storedLocations = logFile['Case Info']['B2'].value
     activeLocation = storedLocations.split(',')[-1]
-    status = 0
-    while status == 0:
-        command = input('\033[1m' + '\033[92m' + case + ' $ ' + '\033[0m')
+    while True:
+        command = input('\033[1m\033[92m' + case + ' $ ' + '\033[0m')
         if command == 'STOP':
-            status = 1
             break
         elif command.split(' ')[0] == 'nano' or command.split(' ')[0] == 'vim' or command.split(' ')[0] == 'crontab' or command.split(' ')[0] == 'vi':
             print(command.split(' ')[0] + ' does not work properly with this app! Try using cat with grep instead.')
-            break
+            continue
         elif command == 'CASEINFO':
             print('Case info\nResearcher:\t' + name + '\nCase name:\t' + case + '\nActive location:\t' + activeLocation)
             continue
@@ -89,11 +87,15 @@ def logger(logFilePath):
             destination = input('Destination of ' + command.split(' ')[1] + ' : ')
             BUF_SIZE = 65536
             sha1 = hashlib.sha1()
-            with open(command.split(' ')[1], 'rb') as f:
-                data = f.read(BUF_SIZE)
-                if not data:
-                    break
-                sha1.update(data)
+            try:
+                with open(command.split(' ')[1], 'rb') as f:
+                    data = f.read(BUF_SIZE)
+                    if not data:
+                        break
+                    sha1.update(data)
+            except FileNotFoundError:
+                print('File not found!')
+                continue
             print(command.split(' ')[1] + '\t' + sha1.hexdigest())
             logFile['CoC'].append([name, datetime.datetime.now(), activeLocation, command.split(' ')[1], EID, source, destination, sha1.hexdigest()])
         else:
