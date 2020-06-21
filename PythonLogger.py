@@ -99,6 +99,13 @@ def logger(logFilePath):
             print(command.split(' ')[1] + '\t' + sha1.hexdigest())
             logFile['CoC'].append([name, datetime.datetime.now(), activeLocation, command.split(' ')[1], EID, source, destination, sha1.hexdigest()])
         else:
+            log = input('Do you want to log this command? [Y/n]')
+            if log == "n":
+                os.system(command + '> /tmp/tmp')
+                outputString = open('/tmp/tmp', 'r').read()
+                print(outputString)
+                os.remove('/tmp/tmp')
+                continue
             what = input('What do you want to accomplish by running this command? ')
             why = input('Why do you want to run this command? ')
             os.system(command + '> /tmp/tmp')
