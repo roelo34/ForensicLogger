@@ -77,6 +77,8 @@ def logger(logFilePath):
             print("Screenshots will be saved at: {0}".format(screenshotsfolder))
             filename = input("Filename for the screenshot: ")
             os.system("import -window root {0}.png".format(os.path.join(screenshotsfolder, filename)))
+            logFile['Log'].append([name, datetime.datetime.now(), activeLocation, "Screenshot gemaakt", "Om een resultaat vast te leggen", 
+            "Ingebouwde functie van ForensicLogger", "Screenshot opgeslagen in: {0} met bestandsnaam: {1}".format(screenshotsfolder, filename)])
         elif command == 'CHANGELOC':
             print('Stored locations: ' + storedLocations)
             newLocation = input('New location: ')
