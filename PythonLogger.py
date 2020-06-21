@@ -1,5 +1,6 @@
 import sys
 import os.path
+import os
 import glob
 import openpyxl
 import datetime
@@ -13,6 +14,7 @@ def main():
             case = input('Case name: ')
             researcher = input('Researcher name: ')
             researcherLocation = input('Location: ')
+            screenshotsfolder = input('Screenshot folder: ')
             print('Setting up your log file...')
             logFile = openpyxl.Workbook()
             infoSheet = logFile.active
@@ -21,6 +23,7 @@ def main():
                 ['Case', case],
                 ['Location', researcherLocation],
                 ['Researcher', researcher],
+                ['Screenshot folder', screenshotsfolder]
             )
             for k in info:
                 infoSheet.append(k)
@@ -48,6 +51,7 @@ def logger(logFilePath):
     logFile = openpyxl.load_workbook(filename= logFilePath)
     name = logFile['Case Info']['B3'].value
     case = logFile['Case Info']['B1'].value
+    screenshotsfolder = logFile['Case Info']['B4'].value
     storedLocations = logFile['Case Info']['B2'].value
     activeLocation = storedLocations.split(',')[-1]
     while True:
@@ -69,6 +73,10 @@ def logger(logFilePath):
             result = input('What is the result of this action? ')
             logFile['Log'].append([name, datetime.datetime.now(), activeLocation, what, why, how, result])
             continue
+        elif command == 'SCREENSHOT':
+            print("Screenshots will be saved at: {0}".format(screenshotsfolder))
+            filename = input("Filename for the screenshot: ")
+            os.system("import -window root {0}.png".format(filename))
         elif command == 'CHANGELOC':
             print('Stored locations: ' + storedLocations)
             newLocation = input('New location: ')
