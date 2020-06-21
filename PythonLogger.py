@@ -76,7 +76,7 @@ def logger(logFilePath):
         elif command == 'SCREENSHOT':
             print("Screenshots will be saved at: {0}".format(screenshotsfolder))
             filename = input("Filename for the screenshot: ")
-            os.system("import -window root {0}{1}.png".format(screenshotsfolder, filename))
+            os.system("import -window root {0}.png".format(os.path.join(screenshotsfolder, filename)))
         elif command == 'CHANGELOC':
             print('Stored locations: ' + storedLocations)
             newLocation = input('New location: ')
